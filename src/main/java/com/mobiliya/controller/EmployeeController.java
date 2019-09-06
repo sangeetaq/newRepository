@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class EmployeeController {
 	IEmployeeService employeeService;
 
 	@GetMapping("/employee/{empId}")
+	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public ResponseEntity<Employee> getEmployeeDetails(@PathVariable("empId") int id) {
 		Employee employee = employeeService.getEmployee(id);
 		ResponseEntity<Employee> response = new ResponseEntity<Employee>(employee, HttpStatus.OK);
@@ -32,6 +34,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/employee")
+	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	public ResponseEntity<List<Employee>> getEmployees() {
 		List<Employee> employee = employeeService.getEmployees();
 		ResponseEntity<List<Employee>> response = new ResponseEntity<List<Employee>>(employee, HttpStatus.CREATED);
@@ -39,6 +42,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping(value = "/employee")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
 		employeeService.addEmployee(employee);
 		ResponseEntity<Employee> response = new ResponseEntity<Employee>(employee, HttpStatus.CREATED);
@@ -46,6 +50,7 @@ public class EmployeeController {
 	}
 
 	@PutMapping(value = "/employee")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
 		employeeService.addEmployee(employee);
 		ResponseEntity<Employee> response = new ResponseEntity<Employee>(employee, HttpStatus.CREATED);
@@ -53,6 +58,7 @@ public class EmployeeController {
 	}
 
 	@DeleteMapping("/employee/{empId}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Employee> deleteEmployee(@PathVariable("empId") int id) {
 		employeeService.deleteEmployee(id);
 		ResponseEntity<Employee> response = new ResponseEntity<Employee>(HttpStatus.OK);

@@ -75,7 +75,7 @@ public class DepartmentControllerTest {
 	@Test
 	public void getDepartment() throws Exception {
 		JwtRequest request = new JwtRequest();
-		request.setUsername("thomasgkz");
+		request.setUsername("adamgkz");
 		request.setPassword("123456789");
 		String accessToken = jwtAuthenticationController.createAuthenticationToken(request);
 
@@ -86,7 +86,7 @@ public class DepartmentControllerTest {
 	@Test
 	public void addDepartment() throws Exception {
 		JwtRequest request = new JwtRequest();
-		request.setUsername("adamgkz");
+		request.setUsername("thomasgkz");
 		request.setPassword("123456789");
 		String accessToken = jwtAuthenticationController.createAuthenticationToken(request);
 		Department obj = new Department();
@@ -104,7 +104,7 @@ public class DepartmentControllerTest {
 	@Test
 	public void updateDepartment() throws Exception {
 		JwtRequest request = new JwtRequest();
-		request.setUsername("adamgkz");
+		request.setUsername("thomasgkz");
 		request.setPassword("123456789");
 		String accessToken = jwtAuthenticationController.createAuthenticationToken(request);
 		Department department = new Department();
@@ -123,7 +123,7 @@ public class DepartmentControllerTest {
 	@Test
 	public void deleteDepartment() throws Exception {
 		JwtRequest request = new JwtRequest();
-		request.setUsername("adamgkz");
+		request.setUsername("thomasgkz");
 		request.setPassword("123456789");
 		String accessToken = jwtAuthenticationController.createAuthenticationToken(request);
 		mockMvc.perform(MockMvcRequestBuilders.delete("/department/102")
