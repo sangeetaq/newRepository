@@ -15,8 +15,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mobiliya.bean.Employee;
 import com.mobiliya.controller.AuthRestAPIs;
@@ -78,7 +76,6 @@ public class EmployeeControllerTest {
 				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(201, status);
-		String content = mvcResult.getResponse().getContentAsString();
 	}
 
 	@Test
@@ -98,7 +95,6 @@ public class EmployeeControllerTest {
 				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(201, status);
-		String content = mvcResult.getResponse().getContentAsString();
 	}
 
 	@Test
