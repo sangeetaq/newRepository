@@ -5,13 +5,21 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+//Employee Entity 
 @Entity
 public class Employee {
 	@Id
@@ -21,14 +29,18 @@ public class Employee {
 	private String id;
 
 	@Column(name = "empId")
+	@NotNull
 	private int empId;
 
 	@Column(name = "empName")
+	@NotEmpty(message = "Employee Name should not be empty")
 	private String empName;
 
-	@ManyToMany(cascade = { CascadeType.ALL })
-	@JoinTable(name = "Employee_Department", joinColumns = { @JoinColumn(name = "emp_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "department_id") })
+	// Employee has many to many bidirectional relationship with Employee
+	// @JsonIgnoreProperties avoid recurssion relationship
+	@ManyToMany(cascade = { CascadeType.ALL }, targetEntity = Department.class)
+	@JoinTable(name = "Employee_Department", joinColumns = @JoinColumn(name = "emp_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "department_id", referencedColumnName = "id"))
+	@JsonIgnoreProperties("employees")
 	Set<Department> departments;
 
 	@Override

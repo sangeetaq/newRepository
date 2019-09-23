@@ -17,9 +17,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mobiliya.bean.Employee;
+import com.mobiliya.bean.JwtRequest;
 import com.mobiliya.controller.AuthRestAPIs;
 import com.mobiliya.controller.EmployeeController;
-import com.mobiliya.util.JwtRequest;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -53,9 +53,9 @@ public class EmployeeControllerTest {
 
 		String accessToken = jwtAuthenticationController.createAuthenticationToken(request);
 		mockMvc.perform(
-				MockMvcRequestBuilders.get("/employee/{empId}", 102).header("Authorization", "Bearer " + accessToken))
+				MockMvcRequestBuilders.get("/employee/{empId}", 15).header("Authorization", "Bearer " + accessToken))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print())
-				.andExpect(MockMvcResultMatchers.jsonPath("$.empId").value(102));
+				.andExpect(MockMvcResultMatchers.jsonPath("$.empId").value(15));
 	}
 
 	@Test

@@ -3,15 +3,18 @@ package com.mobiliya.service;
 import java.util.List;
 
 import com.mobiliya.bean.Department;
+import com.mobiliya.dto.DepartmentDTO;
 
 public interface IDepartmentService {
 
-	void addDepartment(Department department);
+	void addDepartment(DepartmentDTO department);
 
-	Department getDepartment(int id);
+	DepartmentDTO getDepartment(int id);
 
-	List<Department> getDepartments();
+	List<DepartmentDTO> getDepartments();
 
 	void deleteDepartment(int id);
+
+	void updateDepartment(DepartmentDTO department, int departmentId);
 
 }

@@ -9,6 +9,8 @@ import com.mobiliya.bean.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+
+	// Find User by Name.
 	Optional<User> findByUsername(String username);
 
 }
