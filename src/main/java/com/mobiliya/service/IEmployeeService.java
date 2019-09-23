@@ -3,15 +3,18 @@ package com.mobiliya.service;
 import java.util.List;
 
 import com.mobiliya.bean.Employee;
+import com.mobiliya.dto.EmployeeDTO;
 
 public interface IEmployeeService {
 
-	Employee getEmployee(int id);
+	EmployeeDTO getEmployee(int id);
 
-	void addEmployee(Employee employee);
+	void addEmployee(EmployeeDTO employee);
 
-	List<Employee> getEmployees();
+	List<EmployeeDTO> getEmployees();
 
 	void deleteEmployee(int id);
+
+	void updateEmployee(EmployeeDTO employee, int id);
 
 }

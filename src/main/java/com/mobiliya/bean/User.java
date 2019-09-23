@@ -17,6 +17,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
 
+//User Entity which contains unique constraint of combination of  username and email
 @Entity
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }),
 		@UniqueConstraint(columnNames = { "email" }) })
@@ -38,6 +39,7 @@ public class User {
 	@Size(min = 6, max = 100)
 	private String password;
 
+	// Users has Many to Many relations with Roles
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
