@@ -15,6 +15,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	com.mobiliya.dao.UserRepository userRepository;
 
+	// Find User is present in database.
+	// If User is not found in database then throw exception.
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

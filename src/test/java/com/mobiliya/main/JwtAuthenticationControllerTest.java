@@ -18,8 +18,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mobiliya.bean.JwtRequest;
 import com.mobiliya.controller.AuthRestAPIs;
-import com.mobiliya.util.JwtRequest;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)

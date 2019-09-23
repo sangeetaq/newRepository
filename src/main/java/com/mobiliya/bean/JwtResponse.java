@@ -1,4 +1,4 @@
-package com.mobiliya.util;
+package com.mobiliya.bean;
 
 import java.io.Serializable;
 
